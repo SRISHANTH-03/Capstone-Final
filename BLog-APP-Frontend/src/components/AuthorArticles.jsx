@@ -16,6 +16,8 @@ import {
   articleStatusDeleted,
 } from "../styles/common";
 
+const API="https://capstone-final-d6yu.onrender.com"
+
 function AuthorArticles() {
   const navigate = useNavigate();
   const user = useAuth((state) => state.currentUser);
@@ -33,7 +35,7 @@ function AuthorArticles() {
       try {
         setLoading(true);
         //read articles of current author
-        let res = await axios.get("/author-api/articles", { withCredentials: true });
+        let res = await axios.get(`${API}/author-api/articles`, { withCredentials: true });
         if (res.status === 200) {
           setArticles(res.data.payload);
         }

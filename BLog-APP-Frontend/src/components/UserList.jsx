@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useAuth } from "../store/authStore";
 
+const API="https://capstone-final-d6yu.onrender.com"
+
 import {
   articleCardClass,
   articleTitle,
@@ -39,7 +41,7 @@ function UserList() {
       try {
         setLoading(true)
        //read articles of current author
-       let res = await axios.get("http://localhost:4000/admin-api/users",{withCredentials:true})
+       let res = await axios.get(`${API}/admin-api/users`,{withCredentials:true})
        if(res.status === 200){
         setuserList(res.data.payload)
        }
@@ -59,7 +61,7 @@ function UserList() {
   const userDelORactivate = async (user) => {
     try{
       setLoading(true)
-      let res = await axios.patch("http://localhost:4000/admin-api/user",
+      let res = await axios.patch(`${API}/admin-api/user`,
         {
           "userId": user._id,
           "isUserActive": !user.isUserActive

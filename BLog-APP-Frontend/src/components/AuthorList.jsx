@@ -21,6 +21,8 @@ import {
   userActionBtnInactive,
 } from "../styles/common";
 
+const API="https://capstone-final-d6yu.onrender.com"
+
 function AuthorList() {
   const navigate = useNavigate();
   const user = useAuth((state) => state.currentUser);
@@ -39,7 +41,7 @@ function AuthorList() {
       try {
         setLoading(true)
        //read articles of current author
-       let res = await axios.get("http://localhost:4000/admin-api/authors",{withCredentials:true})
+       let res = await axios.get(`${API}/admin-api/authors`,{withCredentials:true})
        if(res.status === 200){
         setuserList(res.data.payload)
        }
@@ -59,7 +61,7 @@ function AuthorList() {
   const userDelORactivate = async (user) => {
     try{
       setLoading(true)
-      let res = await axios.patch("http://localhost:4000/admin-api/user",
+      let res = await axios.patch(`${API}/admin-api/user`,
         {
           "userId": user._id,
           "isUserActive": !user.isUserActive

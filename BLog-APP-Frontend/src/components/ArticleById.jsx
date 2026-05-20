@@ -28,6 +28,8 @@ import {
 } from "../styles/common.js";
 import { useForm } from "react-hook-form";
 
+const API="https://capstone-final-d6yu.onrender.com"
+
 function ArticleByID() {
   const { id } = useParams();
   const location = useLocation();
@@ -50,7 +52,7 @@ function ArticleByID() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`/user-api/article/${id}`, { withCredentials: true });
+        const res = await axios.get(`${API}/user-api/article/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -80,7 +82,7 @@ function ArticleByID() {
 
     try {
       const res = await axios.patch(
-        "/author-api/articles",
+        `${API}/author-api/articles`,
         { articleId: article._id, isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -114,7 +116,7 @@ function ArticleByID() {
     //add artcileId
     commentObj.articleId = article._id;
     console.log(commentObj);
-    let res = await axios.put("/user-api/articles", commentObj, { withCredentials: true });
+    let res = await axios.put(`${API}/user-api/articles`, commentObj, { withCredentials: true });
     if (res.status === 200) {
       
       setArticle(res.data.payload);

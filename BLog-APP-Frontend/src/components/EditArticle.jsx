@@ -15,6 +15,8 @@ import {
   articlePageWrapper,
 } from "../styles/common";
 
+const API="https://capstone-final-d6yu.onrender.com"
+
 function EditArticle() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,7 +45,7 @@ function EditArticle() {
     //add articleId to modified article
     modifiedArticle.articleId=article._id;
     //make PUT req to update article
-    let res=await axios.put("/author-api/articles",
+    let res=await axios.put(`${API}/author-api/articles`,
       modifiedArticle,
       {withCredentials:true})
     //naviagte to articleById component

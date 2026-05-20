@@ -16,6 +16,8 @@ import {
 } from "../styles/common";
 import { useAuth } from "../store/authStore";
 
+const API="https://capstone-final-d6yu.onrender.com"
+
 function WriteArticles() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -38,7 +40,7 @@ function WriteArticles() {
       //set loading true
       setLoading(true);
       //make POST req to save new article
-      let res = await axios.post("/author-api/article", articleObj, { withCredentials: true });
+      let res = await axios.post(`${API}/author-api/article`, articleObj, { withCredentials: true });
       //navigate to AuthorArticles
       if (res.status === 201) {
         toast.success("Article published successfully")
