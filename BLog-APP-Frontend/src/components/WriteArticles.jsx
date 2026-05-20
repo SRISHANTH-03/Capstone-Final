@@ -40,7 +40,19 @@ function WriteArticles() {
       //set loading true
       setLoading(true);
       //make POST req to save new article
-      let res = await axios.post(`${API}/author-api/article`, articleObj, { withCredentials: true });
+      // let res = await axios.post(`${API}/author-api/article`, articleObj, { withCredentials: true });
+      let token = localStorage.getItem("token");
+
+      let res = await axios.post(
+        `${API}/author-api/article`,
+        articleObj,
+        {
+          headers: {
+          Authorization: `Bearer ${token}`,
+          },
+            withCredentials: true,
+        }
+        );
       //navigate to AuthorArticles
       if (res.status === 201) {
         toast.success("Article published successfully")
