@@ -11,7 +11,7 @@ config();
 const app = exp();
 
 app.use(cors({
-  origin: ["capstonefinall.netlify.app", "http://localhost:5173"],
+  origin: ["capstonefinall.netlify.app"],
   credentials: true,
 }));
 
