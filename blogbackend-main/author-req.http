@@ -1,0 +1,64 @@
+POST http://localhost:4000/auth/users
+Content-Type: application/json
+
+{
+    "firstName":"AUTHOR2",
+    "lastName":"",
+    "email":"AUTHOR2@gmail",
+    "password":"AUTHOR2",
+    "role":"AUTHOR",
+    "profileImageUrl":"https://exaample.com/users.png",
+    "isUserActive": true
+}
+
+
+
+
+
+###
+POST http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+    "email":"AUTHOR1@gmail",
+    "password":"AUTHOR1"
+}
+
+###
+GET http://localhost:4000/auth/logout
+
+### create the article
+POST  http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+    "author":"69b45727c4568682ec8403b0",
+    "title":" article 2 by author1",
+    "category":"story",
+    "content":"example of article"
+}
+
+//read own articles
+###
+GET http://localhost:4000/author-api/articles
+
+
+###
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "articleId":"69b4625de12cbebeb3763a2f",
+    "title":"article 2 by author 1",
+    "category":"AI",
+    "content":"test article on ai"
+}
+
+###
+PATCH http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "articleId":"69b4625de12cbebeb3763a2f",
+    "isArticleActive":false
+}
