@@ -21,7 +21,7 @@ app.use(
   })
 );
 
-app.options("/*", cors());
+
 
 // ================= MIDDLEWARE =================
 app.use(exp.json());
