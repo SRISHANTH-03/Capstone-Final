@@ -8,7 +8,7 @@ import AuthorProfile from "./components/AuthorProfile";
 import AuthorArticles from "./components/AuthorArticles";
 import EditArticle from "./components/EditArticle";
 import WriteArticles from "./components/WriteArticles";
-import ArticleById from "./components/ArticleById";
+import ArticleByID from "./components/ArticleByID";
 import { Toaster } from "react-hot-toast";
 import Unauthorized from "./components/Unauthorized";
 import ProtectedRoute from "./components/ProtectedRoute";
