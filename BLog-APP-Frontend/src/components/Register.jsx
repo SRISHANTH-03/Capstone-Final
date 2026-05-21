@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router";
 import { useState } from "react";
 import axios from "axios";
-const API="https://capstone-final-d6yu.onrender.com"
+const API="https://mern-backend-rfm6.onrender.com"
 
 function Register() {
   const {

@@ -28,7 +28,7 @@ import {
 } from "../styles/common.js";
 import { useForm } from "react-hook-form";
 
-const API="https://capstone-final-d6yu.onrender.com"
+const API="https://mern-backend-rfm6.onrender.com"
 
 function ArticleByID() {
   const { id } = useParams();

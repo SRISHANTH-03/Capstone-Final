@@ -16,7 +16,7 @@ import {
 } from "../styles/common";
 import { useAuth } from "../store/authStore";
 
-const API="https://capstone-final-d6yu.onrender.com"
+const API="https://mern-backend-rfm6.onrender.com"
 
 function WriteArticles() {
   const navigate = useNavigate();

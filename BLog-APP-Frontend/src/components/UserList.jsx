@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useAuth } from "../store/authStore";
 
-const API="https://capstone-final-d6yu.onrender.com"
+const API="https://mern-backend-rfm6.onrender.com"
 
 import {
   articleCardClass,
