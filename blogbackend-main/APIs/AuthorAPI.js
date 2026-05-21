@@ -14,7 +14,7 @@ authorApp.post("/article", verifyToken("AUTHOR"), async (req, res) => {
   //check author
   let author = await UserModel.findById(articleObj.author);
   //cross check emails
-  if (author.email != user.email) {
+  if (author.email !== user.email) {
     return res.status(403).json({ message: "You are not authorized" });
   }
   if (!author) {
