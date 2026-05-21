@@ -1,26 +1,46 @@
-import jwt from 'jsonwebtoken'
-import {config} from 'dotenv'
-const {verify}=jwt
-config()
+import jwt from "jsonwebtoken";
+import { config } from "dotenv";
 
-export const verifyToken=(...allowedRoles)=>{
-    return (req,res,next)=>{ 
-       try{
-    // Get token from Authorization header: "Bearer <token>"
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null
+config();
 
-    if(!token){
-        return res.status(401).json({message:"please login first"})
+const { verify } = jwt;
+
+export const verifyToken = (...allowedRoles) => {
+  return (req, res, next) => {
+    try {
+      // Get Authorization header
+      const authHeader = req.headers.authorization;
+
+      // Check if token exists
+      if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({
+          message: "Please login first",
+        });
+      }
+
+      // Extract token
+      const token = authHeader.split(" ")[1];
+
+      // Verify token
+      const decodedToken = verify(token, process.env.SECRET_KEY);
+
+      // Check role authorization
+      if (!allowedRoles.includes(decodedToken.role)) {
+        return res.status(403).json({
+          message: "You are not authorized",
+        });
+      }
+
+      // Attach user to request
+      req.user = decodedToken;
+
+      next();
+    } catch (err) {
+      console.log(err);
+
+      return res.status(401).json({
+        message: "Invalid or expired token",
+      });
     }
-    let decodedToken=verify(token,process.env.SECRET_KEY)
-    if(!allowedRoles.includes(decodedToken.role)){
-        return res.status(403).json({message:"you are not authorized"})
-    }
-    req.user=decodedToken;
-    next()
-}catch(err){
-    res.status(401).json({message:"invalid token"})
-}
-    }
-}
+  };
+};
