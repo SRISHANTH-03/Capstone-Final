@@ -16,7 +16,7 @@ const app = exp();
 // ================= CORS =================
 app.use(
   cors({
-    origin: "https://capstonefinall.netlify.app",
+    origin: ["https://capstonefinall.netlify.app", "https://24eg107d46-myblog.vercel.app"],
     credentials: true,
   })
 );
